@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RinoPrint Regalos - Soluciones que marcan la diferencia | Piloto Premium</title>
+    
+    <!-- Meta SEO -->
+    <meta name="description" content="Descubre el mayor catálogo de regalos corporativos y merchandising premium en Chile. Diseños ecológicos y tecnológicos personalizados con tu marca.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://rinoprint.cl/regalos/favicon/favicon-96x96.png" sizes="96x96">
+    
+    <!-- FontAwesome 6 for modern fine icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ── HEADER UNIFICADO (GLASSMORPHISM) ────────────────────── -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-container">
+            
+            <!-- Branding -->
+            <a href="#" class="brand">
+                <div class="logo-container">
+                    <!-- Rino icon & slogan -->
+                    <i class="fa-solid fa-square-poll-horizontal" style="font-size: 32px; color: var(--color-primary); margin-right: 4px;"></i>
+                    <div class="logo-text">
+                        <span>RinoPrint</span>
+                        <span class="logo-sub">Regalos Corporativos</span>
+                    </div>
+                </div>
+            </a>
+            
+            <!-- Buscador unificado en tiempo real -->
+            <div class="header-search">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" class="search-box" id="searchInput" placeholder="¿Qué regalo corporativo estás buscando?">
+            </div>
+            
+            <!-- Navegación Desktop -->
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active">Inicio</a>
+                <a href="#" class="nav-link">Tienda</a>
+                <a href="#" class="nav-link">Sustentable</a>
+                <a href="#" class="nav-link">Nosotros</a>
+            </nav>
+            
+            <!-- Acciones -->
+            <div class="header-actions">
+                <button class="btn-categories-trigger" id="btnCategoriesTrigger" aria-label="Todas las categorías">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                    <span>Categorías</span>
+                </button>
+                
+                <button class="btn-cart-pill" id="btnCartPill" aria-label="Ver cotización">
+                    <i class="fa-solid fa-file-invoice"></i>
+                    <span>Cotización</span>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                
+                <button class="btn-mobile-menu-toggle" id="btnMobileMenuToggle" aria-label="Menú móvil">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+            </div>
+            
+        </div>
+    </header>
+
+    <!-- ── SIDEBAR DE CATEGORÍAS (FLYOUT TRANSLÚCIDO) ────────────── -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <aside class="sidebar-panel" id="sidebarPanel">
+        <div class="sidebar-header">
+            <h3 class="sidebar-title">
+                <i class="fa-solid fa-tags" style="color: var(--color-primary);"></i>
+                Catálogo de Categorías
+            </h3>
+            <button class="btn-sidebar-close" id="btnSidebarClose" aria-label="Cerrar menú">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="sidebar-body">
+            <!-- Accordion -->
+            <div class="cat-item">
+                <button class="cat-header active" data-target="cat-tec">
+                    <span>Tecnología Premium</span>
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+                </button>
+                <div class="cat-children" id="cat-tec" style="max-height: 500px;">
+                    <a href="#" class="cat-child-link">Cargadores Inalámbricos</a>
+                    <a href="#" class="cat-child-link">Audífonos & Parlantes</a>
+                    <a href="#" class="cat-child-link">Punteros & Presentadores</a>
+                </div>
+            </div>
+            
+            <div class="cat-item">
+                <button class="cat-header" data-target="cat-eco">
+                    <span>Línea Ecológica & Sustentable</span>
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+                </button>
+                <div class="cat-children" id="cat-eco">
+                    <a href="#" class="cat-child-link">Bolsos & Totes Orgánicos</a>
+                    <a href="#" class="cat-child-link">Escritorio de Bambú</a>
+                    <a href="#" class="cat-child-link">Termos & Botellas Eco</a>
+                </div>
+            </div>
+            
+            <div class="cat-item">
+                <button class="cat-header" data-target="cat-oficina">
+                    <span>Oficina & Escritorio</span>
+                    <i class="fa-solid fa-chevron-right arrow"></i>
+                </button>
+                <div class="cat-children" id="cat-oficina">
+                    <a href="#" class="cat-child-link">Libretas & Agendas</a>
+                    <a href="#" class="cat-child-link">Bolígrafos de Marca</a>
+                    <a href="#" class="cat-child-link">Accesorios de Metal</a>
+                </div>
+            </div>
+            
+            <div class="cat-item">
+                <a href="#" class="cat-header" style="justify-content: flex-start; gap: 8px;">
+                    <span>Destacados de Temporada</span>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ── SECCIÓN HERO (SLIDER DE ACCIÓN CINEMÁTICA + TARJETAS DE LADO) ── -->
+    <section class="hero-section">
+        <div class="hero-grid">
+            
+            <!-- Carrusel Principal (Zoom suave - Ken Burns) -->
+            <div class="hero-slider-container">
+                <!-- Slide 1 -->
+                <div class="hero-slide active">
+                    <img src="img/thermo.png" class="slide-img" alt="Termos Premium de Acero">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Novedades</span>
+                        <h2 class="slide-title">Botellas Térmicas con Tu Marca</h2>
+                        <p class="slide-desc">Descubre botellas de acero inoxidable con grabado láser de alta precisión. Un regalo corporativo que destaca por su durabilidad y elegancia.</p>
+                        <a href="#catalogo" class="slide-btn">
+                            <span>Ver Colección</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="hero-slide">
+                    <img src="img/notebook.png" class="slide-img" alt="Escritorio Premium">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Línea Ejecutiva</span>
+                        <h2 class="slide-title">Kits de Oficina de Alta Gama</h2>
+                        <p class="slide-desc">Libretas con textura de lino y bolígrafos ejecutivos con grabado de marca. Ideal para congresos, convenciones y directivos.</p>
+                        <a href="#catalogo" class="slide-btn">
+                            <span>Ver Colección</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="hero-slide">
+                    <img src="img/bag.png" class="slide-img" alt="Eco Canvas Bags">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <span class="slide-tag">Línea Eco</span>
+                        <h2 class="slide-title">Totes de Algodón Orgánico</h2>
+                        <p class="slide-desc">Merchandising sustentable de lona gruesa y costuras reforzadas. El regalo ideal para transmitir un mensaje verde y de calidad.</p>
+                        <a href="#catalogo" class="slide-btn">
+                            <span>Ver Colección</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Navegación Slider -->
+                <div class="slider-dots" id="sliderDots">
+                    <span class="slider-dot active"></span>
+                    <span class="slider-dot"></span>
+                    <span class="slider-dot"></span>
+                </div>
+                <div class="slider-nav">
+                    <button class="btn-slider-arrow" id="btnSliderPrev" aria-label="Slide anterior">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="btn-slider-arrow" id="btnSliderNext" aria-label="Siguiente slide">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Columna de Tarjetas del Lado (Quick Links Rotativos) -->
+            <div class="hero-cards-wrap">
+                <a href="#catalogo" class="hero-side-card" style="background-image: url('img/thermo.png')">
+                    <div class="hero-side-card-content">
+                        <span class="hero-side-card-tag">Destacados</span>
+                        <h3 class="hero-side-card-title">Grabado Láser HD</h3>
+                        <div class="hero-side-card-btn">
+                            <span>Cotizar Termos</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="#catalogo" class="hero-side-card" style="background-image: url('img/organizer.png')">
+                    <div class="hero-side-card-content">
+                        <span class="hero-side-card-tag">Tecnología</span>
+                        <h3 class="hero-side-card-title">Carga Inalámbrica</h3>
+                        <div class="hero-side-card-btn">
+                            <span>Ver Organizador</span>
+                            <i class="fa-solid fa-arrow-right-long"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ── BENTO GRID DE SERVICIOS PREMIUM ──────────────────────── -->
+    <section class="bento-section">
+        <div class="bento-grid">
+            
+            <!-- Card 1: Productos con tu marca (Wide) -->
+            <div class="bento-card bento-double-w">
+                <div class="bento-icon-box">
+                    <i class="fa-solid fa-tags"></i>
+                </div>
+                <div>
+                    <h4 class="bento-title">Productos personalizados con tu marca</h4>
+                    <p class="bento-desc">Merchandising y regalos corporativos diseñados a medida, listos para elevar el reconocimiento de tu negocio en eventos, ferias y fidelización.</p>
+                </div>
+            </div>
+            
+            <!-- Card 2: Impresión Profesional -->
+            <div class="bento-card">
+                <div class="bento-icon-box">
+                    <i class="fa-solid fa-print"></i>
+                </div>
+                <div>
+                    <h4 class="bento-title">Impresión profesional</h4>
+                    <p class="bento-desc">Técnicas avanzadas de grabado láser HD, serigrafía textil, sublimación de alta fidelidad y bordado industrial.</p>
+                </div>
+            </div>
+            
+            <!-- Card 3: +5.000 productos -->
+            <div class="bento-card">
+                <div class="bento-icon-box">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                </div>
+                <div>
+                    <h4 class="bento-title">+5.000 productos corporativos</h4>
+                    <p class="bento-desc">Accede al catálogo de merchandising más completo y moderno de Chile con stock local garantizado.</p>
+                </div>
+            </div>
+            
+            <!-- Card 4: Atención Personalizada (Wide) -->
+            <div class="bento-card bento-double-w">
+                <div class="bento-icon-box">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <div>
+                    <h4 class="bento-title">Atención & asesoría personalizada</h4>
+                    <p class="bento-desc">Nuestro equipo de ejecutivos te acompaña de principio a fin, ayudándote a seleccionar, cotizar y diseñar el set corporativo perfecto para tu empresa.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ── PREMIUM CATALOG GRID (PRODUCTOS CON INTERACTIVIDAD) ────── -->
+    <section class="catalog-section" id="catalogo">
+        <div class="catalog-header">
+            <div class="catalog-headline">
+                <h2>Regalos Corporativos Exclusivos</h2>
+                <p>Artículos corporativos seleccionados para proyectar la mejor imagen de tu marca.</p>
+            </div>
+            <!-- Tabs -->
+            <div class="catalog-tabs">
+                <button class="btn-tab active" data-tab="todos">Todos</button>
+                <button class="btn-tab" data-tab="eco">Ecológico</button>
+                <button class="btn-tab" data-tab="tec">Tecnológico</button>
+            </div>
+        </div>
+        
+        <!-- Malla de Productos -->
+        <div class="product-grid" id="productGrid">
+            
+            <!-- Producto 1 -->
+            <article class="product-card" data-category="tec" data-name="botella termica premium matte acero inoxidable">
+                <span class="product-badge-eco">Premium</span>
+                <button class="btn-fav" aria-label="Agregar a favoritos">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <div class="product-img-wrap">
+                    <img src="img/thermo.png" class="product-img" alt="Botella Térmica Premium Matte">
+                    <div class="product-action-overlay">
+                        <button class="btn-quick-view" data-id="1">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Ver detalles</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <span class="product-code">RP-TH-01</span>
+                    <h3 class="product-name">Botella Térmica Premium Matte</h3>
+                    <div class="product-footer">
+                        <span class="product-stock">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>En Stock</span>
+                        </span>
+                        <button class="btn-add-quote" data-id="1" data-name="Botella Térmica Premium Matte" data-code="RP-TH-01" data-img="img/thermo.png">
+                            Cotizar
+                        </button>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Producto 2 -->
+            <article class="product-card" data-category="tec" data-name="set libreta boligrafo ejecutivo agenda cuero lino">
+                <button class="btn-fav" aria-label="Agregar a favoritos">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <div class="product-img-wrap">
+                    <img src="img/notebook.png" class="product-img" alt="Set de Libreta & Bolígrafo Ejecutivo Studio">
+                    <div class="product-action-overlay">
+                        <button class="btn-quick-view" data-id="2">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Ver detalles</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <span class="product-code">RP-ST-02</span>
+                    <h3 class="product-name">Set de Libreta & Bolígrafo Ejecutivo Studio</h3>
+                    <div class="product-footer">
+                        <span class="product-stock">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>En Stock</span>
+                        </span>
+                        <button class="btn-add-quote" data-id="2" data-name="Set de Libreta & Bolígrafo Ejecutivo Studio" data-code="RP-ST-02" data-img="img/notebook.png">
+                            Cotizar
+                        </button>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Producto 3 -->
+            <article class="product-card" data-category="eco" data-name="bolso tote bag canvas algodon organico natura">
+                <span class="product-badge-eco" style="background: var(--color-accent);">Eco Orgánico</span>
+                <button class="btn-fav" aria-label="Agregar a favoritos">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <div class="product-img-wrap">
+                    <img src="img/bag.png" class="product-img" alt="Bolso Tote Bag Canvas Algodón Orgánico">
+                    <div class="product-action-overlay">
+                        <button class="btn-quick-view" data-id="3">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Ver detalles</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <span class="product-code">RP-TB-03</span>
+                    <h3 class="product-name">Bolso Tote Bag Algodón Orgánico</h3>
+                    <div class="product-footer">
+                        <span class="product-stock">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>En Stock</span>
+                        </span>
+                        <button class="btn-add-quote" data-id="3" data-name="Bolso Tote Bag Algodón Orgánico" data-code="RP-TB-03" data-img="img/bag.png">
+                            Cotizar
+                        </button>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Producto 4 -->
+            <article class="product-card" data-category="tec" data-name="organizador cargador inalambrico walnut madera nogal">
+                <button class="btn-fav" aria-label="Agregar a favoritos">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <div class="product-img-wrap">
+                    <img src="img/organizer.png" class="product-img" alt="Organizador & Cargador Inalámbrico Walnut">
+                    <div class="product-action-overlay">
+                        <button class="btn-quick-view" data-id="4">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Ver detalles</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <span class="product-code">RP-TO-04</span>
+                    <h3 class="product-name">Organizador & Cargador Inalámbrico Walnut</h3>
+                    <div class="product-footer">
+                        <span class="product-stock">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>En Stock</span>
+                        </span>
+                        <button class="btn-add-quote" data-id="4" data-name="Organizador & Cargador Inalámbrico Walnut" data-code="RP-TO-04" data-img="img/organizer.png">
+                            Cotizar
+                        </button>
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+
+    <!-- ── COTIZACIÓN DRAWER (PANEL LATERAL INTERACTIVO) ─────────── -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="drawer-panel" id="drawerPanel">
+        <div class="drawer-header">
+            <h3 class="drawer-title">
+                <i class="fa-solid fa-file-invoice" style="color: var(--color-primary);"></i>
+                Mi Cotización Corporativa
+            </h3>
+            <button class="btn-drawer-close" id="btnDrawerClose" aria-label="Cerrar panel">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="drawer-body">
+            
+            <!-- Lista de items agregados -->
+            <div class="quote-items-container" id="quoteItemsContainer">
+                <!-- Se inyecta dinámicamente con JS -->
+                <div class="quote-empty-state">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <p>Tu cotización está vacía.<br>Agrega regalos del catálogo para cotizar.</p>
+                </div>
+            </div>
+            
+            <!-- Formulario de Envío de Cotización -->
+            <form class="quote-form" id="quoteForm" style="display: none;">
+                <h4 class="quote-form-title">Completa tus datos corporativos</h4>
+                
+                <div class="form-group">
+                    <label class="form-label" for="quoteName">Nombre Completo *</label>
+                    <input type="text" class="form-control" id="quoteName" placeholder="Ej: Marcela López" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="quoteCompany">Empresa *</label>
+                    <input type="text" class="form-control" id="quoteCompany" placeholder="Ej: Mi Negocio Spa" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="quoteEmail">Correo Electrónico *</label>
+                    <input type="email" class="form-control" id="quoteEmail" placeholder="marcela@empresa.cl" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="quotePhone">Teléfono de Contacto *</label>
+                    <input type="tel" class="form-control" id="quotePhone" placeholder="+56 9 1234 5678" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="quoteMsg">Comentarios o Indicaciones (Opcional)</label>
+                    <textarea class="form-control" id="quoteMsg" rows="3" placeholder="Ej: Necesitamos 100 unidades grabadas en láser con nuestro logotipo."></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit-quote" id="btnSubmitQuote">
+                    Solicitar Cotización Rápida
+                </button>
+            </form>
+            
+        </div>
+    </aside>
+
+    <!-- ── WIDGET DE WHATSAPP FLOTANTE E INTELIGENTE (PULSING) ───────── -->
+    <div class="whatsapp-widget" id="whatsappWidget" draggable="true">
+        <div class="whatsapp-bubble-msg" id="whatsappBubble">
+            <i class="fa-solid fa-comment-dots" style="color: #25D366;"></i>
+            <span>¿Buscas asesoría corporativa rápida? ¡Escríbenos!</span>
+        </div>
+        <a href="https://wa.me/56958844744" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Conversar en WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- ── FOOTER BLOCK (CONTRALUZ ELEGANTE OSCURO) ──────────────── -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-brand">
+                <h4>RinoPrint Spa</h4>
+                <p>Creamos soluciones de merchandising y regalos corporativos exclusivos que conectan marcas, personas y valores con la mayor precisión de impresión en Chile.</p>
+                <div class="footer-socials">
+                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h5>Servicio al Cliente</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Contáctanos</a></li>
+                    <li><a href="#">Preguntas Frecuentes</a></li>
+                    <li><a href="#">Políticas de Cambios</a></li>
+                    <li><a href="#">Plazos de Despacho</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h5>Enlaces Rápidos</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Catálogo Sustentable</a></li>
+                    <li><a href="#">Tecnología de Grabado</a></li>
+                    <li><a href="#">Cotizador Masivo</a></li>
+                    <li><a href="#">Casos de Éxito</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h5>Boletín Corporativo</h5>
+                <p style="font-size: 13px; margin-bottom: 12px;">Entérate de las últimas tendencias en merchandising antes que nadie.</p>
+                <form class="newsletter-form" id="newsletterForm" onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!'); this.reset();">
+                    <input type="email" class="newsletter-input" placeholder="correo@empresa.com" required>
+                    <button type="submit" class="newsletter-btn">Suscribir</button>
+                </form>
+            </div>
+            
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 RinoPrint Spa. Todos los derechos reservados. Providencia, Santiago de Chile.</p>
+            <p style="opacity: 0.5;">Piloto Premium de Alta Fidelidad - Rediseño Corporativo</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Bundle -->
+    <script src="app.js"></script>
+</body>
+</html>
