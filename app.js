@@ -1,6 +1,6 @@
 /* ==========================================================================
    INTERACTIVE LOGIC: RinoPrint Regalos - Premium Light & Organic
-   Version: 2.0.0
+   Version: 2.0.1
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {

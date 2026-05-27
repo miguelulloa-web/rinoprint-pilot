@@ -1,6 +1,6 @@
 /* ==========================================================================
    STYLE SHEET: RinoPrint Regalos - Premium Light-Mode & Organic (Option B)
-   Version: 2.0.0
+   Version: 2.0.1
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
@@ -1655,11 +1655,11 @@ img {
 @keyframes product-reveal {
     from {
         opacity: 0;
-        transform: translateY(40px) scale(0.97);
+        transform: translateY(80px) scale(0.9) rotateY(6deg);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0) scale(1) rotateY(0);
     }
 }
 
@@ -1668,4 +1668,22 @@ img {
 .site-footer {
     content-visibility: auto;
     contain-intrinsic-size: 0 600px;
+}
+
+/* Cinematic View Transitions (Efecto Elástico Spring/Bounce) */
+::view-transition-group(*) {
+    animation-duration: 0.75s;
+    animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); /* Efecto rebote súper premium */
+}
+
+/* Efecto de entrada de scroll Bento Grid más prolongado */
+@keyframes bento-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9) rotateX(10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0);
+    }
 }
