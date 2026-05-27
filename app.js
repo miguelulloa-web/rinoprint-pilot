@@ -43,15 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const whatsappBubble = document.getElementById('whatsappBubble');
 
     /* --------------------------------------------------------------------------
-       1. Header Scroll Shrink
+       1. Header Scroll Shrink (CSS-Only / Completamente delegado a style.css)
        -------------------------------------------------------------------------- */
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
-            siteHeader.classList.add('scrolled');
-        } else {
-            siteHeader.classList.remove('scrolled');
-        }
-    });
 
     /* --------------------------------------------------------------------------
        2. Sidebar Categories Flyout (Accordion)
@@ -132,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     startSliderTimer();
 
     /* --------------------------------------------------------------------------
-       4. Real-time Catalog Search & Tab Filters
+       4. Real-time Catalog Search & Tab Filters (View Transitions API)
        -------------------------------------------------------------------------- */
     // Tab Filter
     const tabButtons = document.querySelectorAll('.btn-tab');
@@ -142,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
             
             const selectedTab = btn.getAttribute('data-tab');
-            filterProducts(selectedTab, searchInput.value);
+            triggerFilterWithTransition(selectedTab, searchInput.value);
         });
     });
 
@@ -150,8 +143,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', () => {
             const activeTab = document.querySelector('.btn-tab.active').getAttribute('data-tab');
-            filterProducts(activeTab, searchInput.value);
+            triggerFilterWithTransition(activeTab, searchInput.value);
         });
+    }
+
+    function triggerFilterWithTransition(category, query) {
+        // Asignar view-transition-names dinámicos a las tarjetas visibles actuales
+        const visibleCards = Array.from(productCards).filter(c => c.style.display !== 'none');
+        visibleCards.forEach((card) => {
+            card.style.viewTransitionName = `card-${card.getAttribute('data-id')}`;
+        });
+        
+        if (document.startViewTransition) {
+            document.startViewTransition(() => {
+                filterProducts(category, query);
+                
+                // Actualizar view-transition-names de las nuevas tarjetas visibles
+                const newVisible = Array.from(productCards).filter(c => c.style.display !== 'none');
+                newVisible.forEach((card) => {
+                    card.style.viewTransitionName = `card-${card.getAttribute('data-id')}`;
+                });
+            });
+        } else {
+            filterProducts(category, query);
+        }
     }
 
     function filterProducts(category, query) {

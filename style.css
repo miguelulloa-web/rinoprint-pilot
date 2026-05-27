@@ -127,12 +127,20 @@ img {
     border-bottom: 1px solid var(--glass-border);
     box-shadow: var(--shadow-sm);
     transition: var(--transition-normal);
+    
+    /* Scroll-driven shrink support (CSS-Only / Compositor Thread) */
+    animation: header-shrink linear both;
+    animation-timeline: scroll();
+    animation-range: 0px 80px;
 }
 
-.site-header.scrolled {
-    padding: 6px 0;
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: var(--shadow-md);
+@keyframes header-shrink {
+    to {
+        padding: 6px 0;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow-md);
+        border-color: rgba(0, 0, 0, 0.08);
+    }
 }
 
 .header-container {
@@ -749,6 +757,12 @@ img {
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden;
+    
+    /* Scroll-driven reveal viewport entry */
+    animation: bento-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 30%;
+    will-change: transform, opacity;
 }
 
 .bento-card::before {
@@ -884,6 +898,12 @@ img {
     display: flex;
     flex-direction: column;
     position: relative;
+    
+    /* Scroll-driven cascade entrance */
+    animation: product-reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 25%;
+    will-change: transform, opacity;
 }
 
 .product-card:hover {
@@ -1615,4 +1635,36 @@ img {
         gap: 10px;
         text-align: center;
     }
+}
+
+/* --------------------------------------------------------------------------
+   Scroll-driven Animation Keyframes & Performance Containment (modern-web-guidance)
+   -------------------------------------------------------------------------- */
+@keyframes bento-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96) rotateX(4deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateX(0);
+    }
+}
+
+@keyframes product-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Performance Containment (content-visibility for below-the-fold content) */
+.catalog-section,
+.site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
 }
